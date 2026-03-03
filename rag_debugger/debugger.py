@@ -43,7 +43,7 @@ class RagDebugger:
         # Faithfulness
         faithfulness_data = compute_faithfulness(answer, retrieved_chunks)
 
-        # 🆕 Overall Score (v1.1.0)
+        # Overall Score
         overall_score, quality_label = compute_overall_score(
             similarity_scores.tolist(),
             coverage_data,
@@ -64,14 +64,80 @@ class RagDebugger:
 
         return report
 
+    def evaluate_dataset(self, dataset: list[dict]) -> dict:
+        """
+        Evaluate a dataset of RAG examples.
+
+        Each item must contain:
+        {
+            "query": str,
+            "retrieved_chunks": list[str],
+            "answer": str
+        }
+        """
+
+        results = []
+        overall_scores = []
+        faithfulness_scores = []
+        coverage_scores = []
+        hallucination_counts = []
+
+        for item in dataset:
+            report = self.evaluate(
+                item["query"],
+                item["retrieved_chunks"],
+                item["answer"],
+            )
+
+            results.append(report)
+
+            overall_scores.append(report["overall_score"])
+            faithfulness_scores.append(
+                report["faithfulness"]["faithfulness_score"]
+            )
+
+            # Coverage rate
+            total_terms = len(report["coverage"]["query_terms"])
+            missing = len(report["coverage"]["missing_in_retrieval"])
+            coverage_rate = (
+                1 - (missing / total_terms) if total_terms > 0 else 0
+            )
+            coverage_scores.append(coverage_rate)
+
+            # Hallucination count
+            hallucination_count = (
+                len(report["hallucination"]["unsupported_entities"])
+                + len(report["hallucination"]["unsupported_numbers"])
+            )
+            hallucination_counts.append(hallucination_count)
+
+        n = len(dataset)
+
+        summary = {
+            "num_samples": n,
+            "average_overall_score": round(sum(overall_scores) / n, 3),
+            "average_faithfulness": round(sum(faithfulness_scores) / n, 3),
+            "average_coverage": round(sum(coverage_scores) / n, 3),
+            "average_hallucinations_per_sample": round(
+                sum(hallucination_counts) / n, 3
+            ),
+        }
+
+        return {
+            "summary": summary,
+            "individual_results": results,
+        }
+
     def pretty_print(self, report):
-        print(generate_report(
-            report["retrieval_similarity"],
-            report["redundant_chunks"],
-            report["coverage"],
-            report["hallucination"]["unsupported_entities"],
-            report["hallucination"]["unsupported_numbers"],
-            report["faithfulness"],
-            report["overall_score"],
-            report["quality_label"],
-        ))
+        print(
+            generate_report(
+                report["retrieval_similarity"],
+                report["redundant_chunks"],
+                report["coverage"],
+                report["hallucination"]["unsupported_entities"],
+                report["hallucination"]["unsupported_numbers"],
+                report["faithfulness"],
+                report["overall_score"],
+                report["quality_label"],
+            )
+        )
