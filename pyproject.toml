@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rag-debugger"
+version = "1.5.0"
+description = "A modular evaluation framework for Retrieval-Augmented Generation (RAG) systems."
+authors = [
+    { name = "Ishaan" }
+]
+requires-python = ">=3.9"
+
+dependencies = [
+    "numpy",
+    "scikit-learn",
+    "sentence-transformers",
+    "spacy"
+]
+
+[project.scripts]
+rag-debugger = "rag_debugger.cli:main"

@@ -1,0 +1,10 @@
+Metadata-Version: 2.4
+Name: rag-debugger
+Version: 1.5.0
+Summary: A modular evaluation framework for Retrieval-Augmented Generation (RAG) systems.
+Author: Ishaan
+Requires-Python: >=3.9
+Requires-Dist: numpy
+Requires-Dist: scikit-learn
+Requires-Dist: sentence-transformers
+Requires-Dist: spacy

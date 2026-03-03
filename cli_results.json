@@ -1,32 +1,74 @@
 {
     "summary": {
-        "num_samples": 1,
-        "average_overall_score": 0.551,
-        "average_faithfulness": 0.5,
-        "average_coverage": 0.25,
-        "average_hallucinations_per_sample": 2.0
+        "num_samples": 4,
+        "average_overall_score": 0.568,
+        "average_faithfulness": 0.625,
+        "average_coverage": 0.271,
+        "average_hallucinations_per_sample": 2.5
     },
     "individual_results": [
         {
             "retrieval_similarity": [
                 0.8106375932693481,
-                0.5795766115188599
+                0.6780687570571899
             ],
             "redundant_chunks": [],
             "coverage": {
                 "query_terms": [
                     "range",
                     "what",
-                    "cholesterol",
-                    "normal"
+                    "normal",
+                    "cholesterol"
                 ],
                 "covered_in_retrieval": [
                     "cholesterol"
                 ],
                 "covered_in_answer": [
                     "range",
-                    "cholesterol",
+                    "normal",
+                    "cholesterol"
+                ],
+                "missing_in_retrieval": [
+                    "range",
+                    "what",
                     "normal"
+                ],
+                "missing_in_answer": [
+                    "what"
+                ]
+            },
+            "hallucination": {
+                "unsupported_entities": [],
+                "unsupported_numbers": []
+            },
+            "faithfulness": {
+                "grounded_sentences": 1,
+                "total_sentences": 1,
+                "faithfulness_score": 1.0
+            },
+            "overall_score": 0.723,
+            "quality_label": "Good"
+        },
+        {
+            "retrieval_similarity": [
+                0.8106375932693481,
+                0.6780687570571899
+            ],
+            "redundant_chunks": [],
+            "coverage": {
+                "query_terms": [
+                    "range",
+                    "what",
+                    "normal",
+                    "cholesterol"
+                ],
+                "covered_in_retrieval": [
+                    "cholesterol"
+                ],
+                "covered_in_answer": [
+                    "range",
+                    "normal",
+                    "cholesterol"
                 ],
                 "missing_in_retrieval": [
                     "range",
@@ -50,8 +92,100 @@
                 "total_sentences": 2,
                 "faithfulness_score": 0.5
             },
-            "overall_score": 0.551,
+            "overall_score": 0.568,
             "quality_label": "Moderate"
+        },
+        {
+            "retrieval_similarity": [
+                0.8106375932693481,
+                0.6780687570571899
+            ],
+            "redundant_chunks": [],
+            "coverage": {
+                "query_terms": [
+                    "range",
+                    "what",
+                    "normal",
+                    "cholesterol"
+                ],
+                "covered_in_retrieval": [
+                    "cholesterol"
+                ],
+                "covered_in_answer": [
+                    "range"
+                ],
+                "missing_in_retrieval": [
+                    "range",
+                    "what",
+                    "normal"
+                ],
+                "missing_in_answer": [
+                    "what",
+                    "normal",
+                    "cholesterol"
+                ]
+            },
+            "hallucination": {
+                "unsupported_entities": [
+                    "between 50 and 70",
+                    "the american cardiology association",
+                    "2022"
+                ],
+                "unsupported_numbers": [
+                    "70",
+                    "50",
+                    "2022"
+                ]
+            },
+            "faithfulness": {
+                "grounded_sentences": 1,
+                "total_sentences": 1,
+                "faithfulness_score": 1.0
+            },
+            "overall_score": 0.633,
+            "quality_label": "Moderate"
+        },
+        {
+            "retrieval_similarity": [
+                0.4033600986003876,
+                0.4169125258922577
+            ],
+            "redundant_chunks": [],
+            "coverage": {
+                "query_terms": [
+                    "france",
+                    "capital",
+                    "what"
+                ],
+                "covered_in_retrieval": [
+                    "capital"
+                ],
+                "covered_in_answer": [
+                    "france",
+                    "capital"
+                ],
+                "missing_in_retrieval": [
+                    "france",
+                    "what"
+                ],
+                "missing_in_answer": [
+                    "what"
+                ]
+            },
+            "hallucination": {
+                "unsupported_entities": [
+                    "france",
+                    "paris"
+                ],
+                "unsupported_numbers": []
+            },
+            "faithfulness": {
+                "grounded_sentences": 0,
+                "total_sentences": 1,
+                "faithfulness_score": 0.0
+            },
+            "overall_score": 0.347,
+            "quality_label": "Poor"
         }
     ]
 }

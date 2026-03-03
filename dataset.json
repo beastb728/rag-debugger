@@ -3,8 +3,32 @@
         "query": "What is the normal LDL cholesterol range?",
         "retrieved_chunks": [
             "LDL cholesterol is considered optimal below 100 mg/dL.",
-            "High LDL levels increase cardiovascular risk."
+            "LDL levels above 160 mg/dL are considered high."
         ],
-        "answer": "The normal LDL cholesterol range is 100 mg/dL. It should not exceed 130."
+        "answer": "The normal LDL cholesterol range is below 100 mg/dL."
+    },
+    {
+        "query": "What is the normal LDL cholesterol range?",
+        "retrieved_chunks": [
+            "LDL cholesterol is considered optimal below 100 mg/dL.",
+            "LDL levels above 160 mg/dL are considered high."
+        ],
+        "answer": "The normal LDL cholesterol range is below 100 mg/dL. It should never exceed 130 mg/dL."
+    },
+    {
+        "query": "What is the normal LDL cholesterol range?",
+        "retrieved_chunks": [
+            "LDL cholesterol is considered optimal below 100 mg/dL.",
+            "LDL levels above 160 mg/dL are considered high."
+        ],
+        "answer": "The healthy LDL range is between 50 and 70 mg/dL according to the American Cardiology Association in 2022."
+    },
+    {
+        "query": "What is the capital of France?",
+        "retrieved_chunks": [
+            "Berlin is the capital of Germany.",
+            "Madrid is the capital of Spain."
+        ],
+        "answer": "The capital of France is Paris."
     }
 ]
