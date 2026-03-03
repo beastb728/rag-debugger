@@ -1,4 +1,5 @@
 from .embeddings import embed_texts
+from .scoring import compute_overall_score
 from .similarity import compute_query_chunk_similarity, compute_chunk_redundancy
 from .coverage import extract_query_terms, compute_coverage
 from .hallucination import (
@@ -41,12 +42,24 @@ class RagDebugger:
 
         # Faithfulness
         faithfulness_data = compute_faithfulness(answer, retrieved_chunks)
+
+        # 🆕 Overall Score (v1.1.0)
+        overall_score, quality_label = compute_overall_score(
+            similarity_scores.tolist(),
+            coverage_data,
+            unsupported_entities,
+            unsupported_numbers,
+            faithfulness_data,
+        )
+
         report = {
             "retrieval_similarity": similarity_scores.tolist(),
             "redundant_chunks": redundancy,
             "coverage": coverage_data,
             "hallucination": hallucination_data,
             "faithfulness": faithfulness_data,
+            "overall_score": overall_score,
+            "quality_label": quality_label,
         }
 
         return report
@@ -58,5 +71,7 @@ class RagDebugger:
             report["coverage"],
             report["hallucination"]["unsupported_entities"],
             report["hallucination"]["unsupported_numbers"],
-            report["faithfulness"]
+            report["faithfulness"],
+            report["overall_score"],
+            report["quality_label"],
         ))
