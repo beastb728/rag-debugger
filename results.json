@@ -1,0 +1,17 @@
+{
+    "summary": {
+        "num_samples": 2,
+        "average_overall_score": 0.551,
+        "average_faithfulness": 0.5,
+        "average_coverage": 0.25,
+        "average_hallucinations_per_sample": 2.0
+    },
+    "individual_results": [
+        {
+            "retrieval_similarity": [
+                0.8106375932693481,
+                0.5795766115188599
+            ],
+            "redundant_chunks": [],
+            "coverage": {
+                "query_terms": 

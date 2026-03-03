@@ -1,3 +1,5 @@
+import json
+
 from .embeddings import embed_texts
 from .scoring import compute_overall_score
 from .similarity import compute_query_chunk_similarity, compute_chunk_redundancy
@@ -64,7 +66,11 @@ class RagDebugger:
 
         return report
 
-    def evaluate_dataset(self, dataset: list[dict]) -> dict:
+    def evaluate_dataset(
+        self,
+        dataset: list[dict],
+        export_path: str | None = None,
+    ) -> dict:
         """
         Evaluate a dataset of RAG examples.
 
@@ -74,6 +80,8 @@ class RagDebugger:
             "retrieved_chunks": list[str],
             "answer": str
         }
+
+        If export_path is provided, results will be written to JSON.
         """
 
         results = []
@@ -123,10 +131,17 @@ class RagDebugger:
             ),
         }
 
-        return {
+        final_output = {
             "summary": summary,
             "individual_results": results,
         }
+
+        # 🔥 JSON Export (v1.3.0 feature)
+        if export_path:
+            with open(export_path, "w") as f:
+                json.dump(final_output, f, indent=4)
+
+        return final_output
 
     def pretty_print(self, report):
         print(

@@ -36,7 +36,7 @@ if __name__ == "__main__":
         }
     ]
 
-    dataset_report = debugger.evaluate_dataset(dataset)
+    dataset_report = debugger.evaluate_dataset(dataset, export_path="results.json")
 
     print("Dataset Summary:")
     print(dataset_report["summary"])
