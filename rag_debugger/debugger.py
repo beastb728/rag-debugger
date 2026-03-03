@@ -136,10 +136,22 @@ class RagDebugger:
             "individual_results": results,
         }
 
-        # 🔥 JSON Export (v1.3.0 feature)
+        # 🔥 JSON Export (v1.3.1 FIXED)
         if export_path:
+
+            def make_json_serializable(obj):
+                if isinstance(obj, set):
+                    return list(obj)
+                if isinstance(obj, dict):
+                    return {k: make_json_serializable(v) for k, v in obj.items()}
+                if isinstance(obj, list):
+                    return [make_json_serializable(i) for i in obj]
+                return obj
+
+            serializable_output = make_json_serializable(final_output)
+
             with open(export_path, "w") as f:
-                json.dump(final_output, f, indent=4)
+                json.dump(serializable_output, f, indent=4)
 
         return final_output
 
