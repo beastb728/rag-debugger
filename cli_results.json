@@ -1,0 +1,57 @@
+{
+    "summary": {
+        "num_samples": 1,
+        "average_overall_score": 0.551,
+        "average_faithfulness": 0.5,
+        "average_coverage": 0.25,
+        "average_hallucinations_per_sample": 2.0
+    },
+    "individual_results": [
+        {
+            "retrieval_similarity": [
+                0.8106375932693481,
+                0.5795766115188599
+            ],
+            "redundant_chunks": [],
+            "coverage": {
+                "query_terms": [
+                    "range",
+                    "what",
+                    "cholesterol",
+                    "normal"
+                ],
+                "covered_in_retrieval": [
+                    "cholesterol"
+                ],
+                "covered_in_answer": [
+                    "range",
+                    "cholesterol",
+                    "normal"
+                ],
+                "missing_in_retrieval": [
+                    "range",
+                    "what",
+                    "normal"
+                ],
+                "missing_in_answer": [
+                    "what"
+                ]
+            },
+            "hallucination": {
+                "unsupported_entities": [
+                    "130"
+                ],
+                "unsupported_numbers": [
+                    "130"
+                ]
+            },
+            "faithfulness": {
+                "grounded_sentences": 1,
+                "total_sentences": 2,
+                "faithfulness_score": 0.5
+            },
+            "overall_score": 0.551,
+            "quality_label": "Moderate"
+        }
+    ]
+}

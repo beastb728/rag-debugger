@@ -1,0 +1,10 @@
+[
+    {
+        "query": "What is the normal LDL cholesterol range?",
+        "retrieved_chunks": [
+            "LDL cholesterol is considered optimal below 100 mg/dL.",
+            "High LDL levels increase cardiovascular risk."
+        ],
+        "answer": "The normal LDL cholesterol range is 100 mg/dL. It should not exceed 130."
+    }
+]
